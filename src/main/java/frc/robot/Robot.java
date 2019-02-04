@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.chassis;
+import frc.robot.subsystems.vision;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ import frc.robot.subsystems.chassis;
  */
 public class Robot extends TimedRobot {
   public static chassis m_chassis = new chassis();
+  public static vision m_vision = new vision();
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -35,9 +37,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    // should we get rid of ALL autonomous commands?
+    // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
-    //SmartDashboard.putData("Auto mode", m_chooser);
+    SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**

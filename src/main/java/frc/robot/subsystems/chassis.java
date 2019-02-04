@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
- * Add your docs here.
+ * tank drive model of the chassis
+ * four individual drive motors
+ * in left and right pairs
  */
 public class chassis extends Subsystem {
   // Put methods for controlling this subsystem

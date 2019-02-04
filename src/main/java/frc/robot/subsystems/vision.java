@@ -126,6 +126,118 @@ public class vision extends Subsystem {
                startDataOnlyStream();        
           }    
      }
+     public void stop(){        
+          if(broadcastUSBCam){            
+               //Start streaming the JeVois via webcam            
+               //This auto-starts the serial stream            
+               stopCameraStream();         
+          } else {            
+               stopDataOnlyStream();        
+          }    
+     }    
+
+     /**     
+     * * Send commands to the JeVois to configure it for image-processing friendly parameters     
+     */    
+     public void setCamVisionProcMode() {        
+          if (visionPort != null){            
+               sendCmdAndCheck("setcam autoexp 1"); 
+               //Disable auto exposure            
+               sendCmdAndCheck("setcam absexp 75"); 
+               //Force exposure to a low value for vision processing        
+          }    
+     }    
+
+     /**     
+      * * Send parameters to the camera to configure it for a human-readable image     
+      */    
+     public void setCamHumanDriverMode() {        
+          if (visionPort != null){            
+               sendCmdAndCheck("setcam autoexp 0"); 
+               //Enable AutoExposure        
+          }    
+     }
+
+
+     /*
+     * public GETTERS AND SETTERS
+     * 
+     */
+
+     /**     
+      * Returns the most recently seen target's angle relative to the camera in degrees     
+      * Positive means to the Right of center, negative means to the left     
+      */    
+     public double getTgtAngle_Deg() {        
+          return tgtAngleDeg;    
+     }
+     
+     /** 
+      * Returns the most recently seen target's range from the camera in inches     
+      * Range means distance along the ground from camera mount point to observed target     
+      * Return values should only be positive     */
+     public double getTgtRange_in() {        
+          return tgtRange;    
+     }        
+     
+     /**     
+      * Get the estimated timestamp of the most recent target observation.     
+      * This is calculated based on the FPGA timestamp at packet RX time, minus the reportetd vision pipeline delay.     
+      * It will not currently account for serial hardware or other delays.     
+      */    
+     public double getTgtTime() {        
+          return tgtTime;    
+     }    
+
+    /**     
+     * Returns true when the roboRIO is recieving packets from the JeVois, false if no packets have been recieved.     
+     * Other modules should not use the vision processing results if this returns false.     
+     */    
+     public boolean isVisionOnline() {        
+          return visionOnline;    
+     }        
+
+     /**     
+     * Returns true when the JeVois sees a target and is tracking it, false otherwise.     
+     */    
+     public boolean isTgtVisible() {        
+          return tgtVisible;    
+     }        
+     
+     /**     
+     * Returns the JeVois's most recently reported CPU Temperature in deg C     
+     */    
+     public double getJeVoisCPUTemp_C(){        
+          return jeVoisCpuTempC;    
+     }     
+     
+     /**     
+     * Returns the JeVois's most recently reported CPU Load in percent of max     
+     */    
+     public double getJeVoisCpuLoad_pct(){        
+          return jeVoisCpuLoadPct;    
+     }     
+     
+     /**     
+     * Returns the JeVois's most recently reported pipline framerate in Frames per second     
+     */    
+     public double getJeVoisFramerate_FPS(){        
+          return jeVoisFramerateFPS;    
+     }     
+
+     /**     
+     * Returns the roboRIO measured serial packet recieve rate in packets per second     
+     */    
+     public int getPacketRxRate_PPS(){    	
+          if(visionOnline){    	
+               return (int)Math.round(packetRxRatePPS);    	
+          } else {    	
+               return 0;    	
+          }    
+     }
+
+
+
 
     /**     
      * * Set to true to enable the camera stream, or set to false to stream serial-packets only.     
@@ -216,7 +328,8 @@ public class vision extends Subsystem {
      }
 
      // buffer to contain data from the port while we gather full packets     
-     private StringBuffer packetBuffer = new StringBuffer(100);    
+     private StringBuffer packetBuffer = new StringBuffer(100); 
+
      /**      
       * Blocks thread execution till we get a valid packet from the serial line     
       * or timeout.      
@@ -280,7 +393,6 @@ public class vision extends Subsystem {
           }
           return value;
      }    
-
      
      /** Private wrapper around the Thread.sleep method, to catch that interrupted error.
       * @param time_ms517     

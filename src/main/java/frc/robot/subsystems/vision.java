@@ -571,15 +571,13 @@ public class vision extends Subsystem {
 
      /**     
      * This thread runs a periodic task in the background to listen for vision camera packets.     
-     *    Thread packetListenerThread = new Thread(new Runnable(){        public void run(){     
-          *   	while(!Thread.interrupted()){        	backgroundUpdate();           	}        }    });
-          */
-  Thread packetListenerThread = new Thread(new Runnable(){  
-       @Override
-       public void run() {
-          while(!Thread.interrupted()){
-               backgroundUpdate();
+     */
+     Thread packetListenerThread = new Thread(new Runnable(){  
+          @Override
+          public void run() {
+               while(!Thread.interrupted()){
+                    backgroundUpdate();
+               }
           }
-       }
-  });
+     });
 }

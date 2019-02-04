@@ -299,6 +299,24 @@ public class vision extends Subsystem {
           return 0;             
      }    
 
+     /**     
+      * * Mostly for debugging. Blocks execution forever and just prints all serial      
+      * characters to the console. It might print a different message too if nothing     
+      * comes in.     
+      */    
+     public void blockAndPrintAllSerial(){        
+          if (visionPort != null){            
+               while(!Thread.interrupted()){                
+                    if (visionPort.getBytesReceived() > 0) {                    
+                         System.out.print(visionPort.readString());                
+                    } else {                    
+                         System.out.println("Nothing Rx'ed");                   
+                         sleep(100);               
+                    }           
+               }      
+          }   
+     }
+
 
      // private commands
      //
@@ -515,6 +533,34 @@ public class vision extends Subsystem {
                dataStreamRunning = false;        
           }    
      }
+
+     //Persistent but "local" variables for getBytesPeriodic()    
+     private String getBytesWork = "";    
+     private int loopCount = 0;    
+     /**     
+     * Read bytes from the serial port in a non-blocking fashion     
+     * Will return the whole thing once the first "OK" or "ERR" is seen in the stream.     
+     * Returns null if no string read back yet.     
+     */    
+     private String getCmdResponseNonBlock() {        
+          String retval =  null;        
+          if (visionPort != null){            
+               if (visionPort.getBytesReceived() > 0) {                
+                    String rxString = visionPort.readString();                
+                    System.out.println("Waited: " + loopCount + " loops, Rcv'd: " + rxString);                
+                    getBytesWork += rxString;                
+                    if(getBytesWork.contains("OK") || getBytesWork.contains("ERR")){                    
+                         retval = getBytesWork;                    
+                         getBytesWork = "";                   
+                         System.out.println(retval);                
+                    }                
+                    loopCount = 0;            
+               } else {                
+                    ++loopCount;            
+               }        
+          }        
+          return retval;    
+     }    
 
 
   @Override

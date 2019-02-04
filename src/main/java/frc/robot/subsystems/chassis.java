@@ -77,6 +77,6 @@ public class chassis extends Subsystem {
      }
 
      public void driveTank(Joystick stick){
-          drive00.tankDrive(-stick.getY(), -stick.getX());
+          drive00.arcadeDrive(stick.getY(), stick.getX());;
      }
 }

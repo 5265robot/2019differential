@@ -67,6 +67,8 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    System.out.print("doing vision stuffs");        
+    System.out.println(m_vision.getPacketRxRate_PPS());
   }
 
   /**
@@ -129,5 +131,22 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+     System.out.println("==============+++==============");        
+     System.out.print("Vision Online: ");        
+     System.out.println(m_vision.isVisionOnline());        
+     System.out.print("Target Visible: ");        
+     System.out.println(m_vision.isTgtVisible());        
+     System.out.print("Target Angle: ");        
+     System.out.println(m_vision.getTgtAngle_Deg());        
+     System.out.print("Target Range:");        
+     System.out.println(m_vision.getTgtRange_in());        
+     System.out.print("Serial Packet RX Rate: ");        
+     System.out.println(m_vision.getPacketRxRate_PPS());        
+     System.out.print("JeVois Framerate: ");        
+     System.out.println(m_vision.getJeVoisFramerate_FPS());        
+     System.out.print("JeVois CPU Load: ");        
+     System.out.println(m_vision.getJeVoisCpuLoad_pct());               
+     System.out.println("===============================\n\n\n");
+
   }
 }

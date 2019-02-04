@@ -49,7 +49,7 @@ public class chassis extends Subsystem {
           motor03.setInverted(false);
           
           drive00.setSafetyEnabled(false);
-          drive00.setExpiration(0.1);
+          drive00.setExpiration(1.0);
           drive00.setMaxOutput(1.0);
      }
 
@@ -77,6 +77,6 @@ public class chassis extends Subsystem {
      }
 
      public void driveTank(Joystick stick){
-          drive00.arcadeDrive(stick.getY(), stick.getX());;
+          drive00.arcadeDrive(-stick.getY(), -stick.getX());;
      }
 }

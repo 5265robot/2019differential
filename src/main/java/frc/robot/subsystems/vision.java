@@ -37,7 +37,7 @@ public class vision extends Subsystem {
     private static final String PACKET_DILEM_CHAR = ",";
     private static final int PACKET_NUM_EXPECTED_FIELDS = 3;
     // Confgure the camera to stream debug images or not.
-    private boolean broadcastUSBCam = false;
+    private boolean broadcastUSBCam = true;
     // When not streaming, use this mapping
     private static final int NO_STREAM_MAPPING = 2;
     // When streaming, use this set of configuration
@@ -128,8 +128,8 @@ public class vision extends Subsystem {
      }
      public void stop(){        
           if(broadcastUSBCam){            
-               //Start streaming the JeVois via webcam            
-               //This auto-starts the serial stream            
+               //Stop streaming the JeVois via webcam            
+               //This stops the serial stream            
                stopCameraStream();         
           } else {            
                stopDataOnlyStream();        

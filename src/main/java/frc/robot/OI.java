@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.driveLeft;
 import frc.robot.commands.driveRight;
+import frc.robot.commands.visionHuman;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -49,14 +50,17 @@ public class OI {
   public Joystick thrustmaster;
   private JoystickButton leftDrive;
   private JoystickButton rightDrive;
+  private JoystickButton humanCamera;
 
   public OI() {
      thrustmaster = new Joystick(0);
-     leftDrive = new JoystickButton(thrustmaster, 10);
-     rightDrive = new JoystickButton(thrustmaster, 9);
+     leftDrive = new JoystickButton(thrustmaster, 9);
+     rightDrive = new JoystickButton(thrustmaster, 10);
+     humanCamera = new JoystickButton(thrustmaster, 8);
 
      leftDrive.whenPressed(new driveLeft());
      rightDrive.whenPressed(new driveRight());
+     humanCamera.whenPressed(new visionHuman());
   }
 
   public Joystick getThrustmaster() {

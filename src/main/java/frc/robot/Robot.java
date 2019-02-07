@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.chassis;
+import frc.robot.subsystems.lights;
 import frc.robot.subsystems.vision;
 
 /**
@@ -24,6 +25,7 @@ import frc.robot.subsystems.vision;
  */
 public class Robot extends TimedRobot {
   public static chassis m_chassis = new chassis();
+  public static lights m_lights = new lights();
   public static vision m_vision = new vision();
   public static OI m_oi;
 

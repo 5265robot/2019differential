@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.chassis;
 import frc.robot.subsystems.lights;
-import frc.robot.subsystems.vision;
+//import frc.robot.subsystems.vision;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +26,7 @@ import frc.robot.subsystems.vision;
 public class Robot extends TimedRobot {
   public static chassis m_chassis = new chassis();
   public static lights m_lights = new lights();
-  public static vision m_vision = new vision();
+  //public static vision m_vision = new vision();
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -69,8 +69,8 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
-    System.out.print("doing vision stuffs");        
-    System.out.println(m_vision.getPacketRxRate_PPS());
+    //System.out.print("doing vision stuffs");        
+    //System.out.println(m_vision.getPacketRxRate_PPS());
   }
 
   /**
@@ -133,7 +133,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-     System.out.println("==============+++==============");        
+     /*System.out.println("==============+++==============");        
      System.out.print("Vision Online: ");        
      System.out.println(m_vision.isVisionOnline());        
      System.out.print("Target Visible: ");        
@@ -149,6 +149,7 @@ public class Robot extends TimedRobot {
      System.out.print("JeVois CPU Load: ");        
      System.out.println(m_vision.getJeVoisCpuLoad_pct());               
      System.out.println("===============================\n\n\n");
+     */
 
   }
 }

@@ -20,7 +20,9 @@ public class ringLight extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-       Robot.m_lights.greenSwitch();
+     // testing code
+     // System.out.print("DOING RELAY STUFFS");
+     Robot.m_lights.greenSwitch();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -31,7 +33,7 @@ public class ringLight extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

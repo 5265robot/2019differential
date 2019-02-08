@@ -7,9 +7,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.hal.sim.mockdata.RelayDataJNI;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Relay.Value;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -19,12 +17,12 @@ public class lights extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final Relay spike00 = new Relay(0);
+  private final Talon spike00 = new Talon(9);
 
-
-  public lights() {
+  /*public lights() {
      super();
   }
+  */
 
   @Override
   public void initDefaultCommand() {
@@ -32,13 +30,16 @@ public class lights extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void greenSwitch(){
-     if (spike00.get() == Value.kOff) {
-          spike00.set(Value.kOn);
+     public void greenSwitch(){
+          // testing code
+          // System.out.println("NOW DOING green stuffs");
+          spike00.setSafetyEnabled(false);
+          if (spike00.get() == 1.0) {
+               spike00.set(0);
+          }
+          else {
+               spike00.set(1.0);
+          }
      }
-     else {
-          spike00.set(Value.kOff);
-     }
-  }
 
 }

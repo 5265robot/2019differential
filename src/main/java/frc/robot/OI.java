@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.driveLeft;
 import frc.robot.commands.driveRight;
+import frc.robot.commands.ringLight;
 import frc.robot.commands.visionHuman;
 
 /**
@@ -51,16 +52,19 @@ public class OI {
   private JoystickButton leftDrive;
   private JoystickButton rightDrive;
   private JoystickButton humanCamera;
+  private JoystickButton lightSwitch;
 
   public OI() {
      thrustmaster = new Joystick(0);
      leftDrive = new JoystickButton(thrustmaster, 9);
      rightDrive = new JoystickButton(thrustmaster, 10);
      humanCamera = new JoystickButton(thrustmaster, 8);
+     lightSwitch = new JoystickButton(thrustmaster, 7);
 
      leftDrive.whenPressed(new driveLeft());
      rightDrive.whenPressed(new driveRight());
      humanCamera.whenPressed(new visionHuman());
+     lightSwitch.whenPressed(new ringLight());
   }
 
   public Joystick getThrustmaster() {

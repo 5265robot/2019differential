@@ -25,6 +25,8 @@ public class driveRight extends Command {
      // Called just before this Command runs the first time
      @Override
      protected void initialize() {
+          // testing code
+          // System.out.print("doing right stuffs");
           Timer.delay(0.1);
           Robot.m_chassis.driveRight(speed);
      }

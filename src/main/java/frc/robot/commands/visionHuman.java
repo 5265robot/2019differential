@@ -14,7 +14,7 @@ import frc.robot.Robot;
 public class visionHuman extends Command {
   public visionHuman() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_vision);
+    //requires(Robot.m_vision);
   }
 
   // Called just before this Command runs the first time
@@ -25,9 +25,9 @@ public class visionHuman extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-     Robot.m_vision.stop();
+     //Robot.m_vision.stop();
      Timer.delay(0.1);
-     Robot.m_vision.start();
+     //Robot.m_vision.start();
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -25,8 +25,10 @@ public class driveLeft extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-       Timer.delay(0.1);
-       Robot.m_chassis.driveLeft(speed);
+     // testing code
+     // System.out.print("doing left stuffs");
+     Timer.delay(0.1);
+     Robot.m_chassis.driveLeft(speed);
   }
 
   // Called repeatedly when this Command is scheduled to run

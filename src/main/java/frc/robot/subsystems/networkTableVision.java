@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -29,9 +28,11 @@ public class networkTableVision extends Subsystem {
      public networkTableVision() {
           super();
 
-          // Connect NetworkTables, and get access to the publishing table
+          // Connect NetworkTables, and get access to the default table
           myNT = NetworkTableInstance.getDefault();
+          // get (does it also create??) a table by name
           mytable = myNT.getTable("datatable");
+          // get (does it also create??) a table entry by name
           myX = mytable.getEntry("X");
           myY = mytable.getEntry("Y");
      }
@@ -43,11 +44,8 @@ public class networkTableVision extends Subsystem {
      }
 
      public void start() {
+          // set a couple of table entries
           myX.setDouble(2.11);
           myY.setBoolean(true);
-          // mytable.getEntry("X");
-          // NetworkTable.setClientMode();
-
-          // NetworkTable.create();
      }
 }

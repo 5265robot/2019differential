@@ -53,8 +53,8 @@ public class OI {
      private static final int bt_02 = 2;
      private static final int bt_03 = 3;
      private static final int bt_04 = 4;
-     private static final int bt_05 = 7;
-     private static final int bt_06 = 8;
+     private static final int bt_05 = 1;
+     private static final int bt_06 = 2;
      private static final int bt_07 = 5;
      private static final int bt_08 = 6;
      private static final int bt_09 = 2;

@@ -45,7 +45,13 @@ public class networkTableVision extends Subsystem {
 
      public void start() {
           // set a couple of table entries
-          myX.setDouble(2.11);
-          myY.setBoolean(true);
+          if (myY.getBoolean(false)) {
+               myX.setDouble(3.14);
+               myY.setBoolean(false);
+          } else {
+               myX.setDouble(2.11);
+               myY.setBoolean(true);
+          }
+
      }
 }

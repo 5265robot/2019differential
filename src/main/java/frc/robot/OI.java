@@ -49,20 +49,20 @@ public class OI {
      // button.whenReleased(new ExampleCommand());
 
      // THRUSTMASTER button number converted to driver station input number
-     private static final int bt_01 = 1;
-     private static final int bt_02 = 2;
-     private static final int bt_03 = 3;
-     private static final int bt_04 = 4;
+     private static final int bt_01 = 6;
+     private static final int bt_02 = 5;
+     private static final int bt_03 = 12;
+     private static final int bt_04 = 11;
      private static final int bt_05 = 1;
      private static final int bt_06 = 2;
-     private static final int bt_07 = 5;
-     private static final int bt_08 = 6;
-     private static final int bt_09 = 2;
-     private static final int bt_10 = 3;
-     private static final int bt_11 = 4;
-     private static final int bt_12 = 7;
-     private static final int bt_13 = 8;
-     private static final int bt_14 = 5;
+     private static final int bt_07 = 3;
+     private static final int bt_08 = 4;
+     private static final int bt_09 = 8;
+     private static final int bt_10 = 7;
+     private static final int bt_11 = 9;
+     private static final int bt_12 = 10;
+     private static final int bt_13 = 13;
+     // private static final int bt_14 = 5;
 
      public Joystick thrustmaster;
      private JoystickButton leftDrive;

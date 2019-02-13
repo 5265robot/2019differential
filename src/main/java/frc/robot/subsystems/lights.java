@@ -32,8 +32,6 @@ public class lights extends Subsystem {
           // setDefaultCommand(new MySpecialCommand());
      }
 
-     ;
-
      public void cameraSetup() {
           Thread visionThread = new Thread(() -> {
                UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();

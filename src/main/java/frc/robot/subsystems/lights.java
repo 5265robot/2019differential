@@ -7,8 +7,11 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+//import sun.nio.cs.MS1250;
 
 /**
  * Add your docs here.
@@ -27,6 +30,19 @@ public class lights extends Subsystem {
      public void initDefaultCommand() {
           // Set the default command for a subsystem here.
           // setDefaultCommand(new MySpecialCommand());
+     }
+
+     ;
+
+     public void cameraSetup() {
+          Thread visionThread = new Thread(() -> {
+               UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+               camera.setResolution(160, 120);
+               camera.setExposureManual(0);
+          });
+          visionThread.setDaemon(true);
+          visionThread.start();
+          // CameraServer.getInstance();
      }
 
      public void greenSwitch() {

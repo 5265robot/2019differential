@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
      @Override
      public void robotInit() {
           m_oi = new OI();
-          CameraServer.getInstance().startAutomaticCapture();
+          // CameraServer.getInstance().startAutomaticCapture();
           // should we get rid of ALL autonomous commands?
           // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
           // chooser.addOption("My Auto", new MyAutoCommand());

@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.cameraActivate;
 import frc.robot.commands.driveLeft;
 import frc.robot.commands.driveRight;
 import frc.robot.commands.networkTableStart;
@@ -69,6 +70,7 @@ public class OI {
      private JoystickButton rightDrive;
      private JoystickButton humanCamera;
      private JoystickButton lightSwitch;
+     private JoystickButton cameraSwitch;
      private JoystickButton testNetworkTable;
 
      public OI() {
@@ -78,12 +80,14 @@ public class OI {
           humanCamera = new JoystickButton(thrustmaster, bt_09);
           lightSwitch = new JoystickButton(thrustmaster, bt_10);
           testNetworkTable = new JoystickButton(thrustmaster, bt_08);
+          cameraSwitch = new JoystickButton(thrustmaster, bt_07);
 
           leftDrive.whenPressed(new driveLeft());
           rightDrive.whenPressed(new driveRight());
           humanCamera.whenPressed(new visionHuman());
           lightSwitch.whenPressed(new ringLight());
           testNetworkTable.whenPressed(new networkTableStart());
+          cameraSwitch.whenPressed(new cameraActivate());
      }
 
      public Joystick getThrustmaster() {

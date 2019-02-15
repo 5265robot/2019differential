@@ -22,7 +22,8 @@ public class lights extends Subsystem {
 
      private final Talon spike00 = new Talon(9);
      private UsbCamera camera;
-     private boolean isManual;
+     private boolean isManual = false;
+     private boolean cameraThreadRunning = false;
 
      /*
       * public lights() { super(); }
@@ -35,15 +36,20 @@ public class lights extends Subsystem {
      }
 
      public void cameraSetup() {
-          Thread visionThread = new Thread(() -> {
-               camera = CameraServer.getInstance().startAutomaticCapture();
-               camera.setResolution(160, 120);
-               camera.setExposureManual(0);
-               isManual = true;
-          });
-          visionThread.setDaemon(true);
-          visionThread.start();
-          // CameraServer.getInstance();
+          if (cameraThreadRunning) {
+               System.out.println("camera already running");
+          } else {
+               cameraThreadRunning = true;
+               Thread visionThread = new Thread(() -> {
+                    camera = CameraServer.getInstance().startAutomaticCapture();
+                    camera.setResolution(160, 120);
+                    camera.setExposureManual(0);
+                    isManual = true;
+               });
+               visionThread.setDaemon(true);
+               visionThread.start();
+               // CameraServer.getInstance();
+          }
      }
 
      public void greenSwitch() {
@@ -58,10 +64,13 @@ public class lights extends Subsystem {
      }
 
      public void cameraExposure() {
-          if (isManual)
+          if (isManual) {
                camera.setExposureAuto();
-          else
+               isManual = false;
+          } else {
                camera.setExposureManual(0);
+               isManual = true;
+          }
      }
 
 }

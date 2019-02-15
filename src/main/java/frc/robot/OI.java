@@ -53,6 +53,9 @@ public class OI {
   private JoystickButton rightDrive;
   private JoystickButton humanCamera;
   private JoystickButton lightSwitch;
+  //
+  //
+  
 
   public OI() {
      thrustmaster = new Joystick(0);

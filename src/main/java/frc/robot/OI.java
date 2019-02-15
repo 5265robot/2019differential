@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.cameraActivate;
+import frc.robot.commands.cameraExposureFlip;
 import frc.robot.commands.driveLeft;
 import frc.robot.commands.driveRight;
 import frc.robot.commands.networkTableStart;
@@ -66,28 +67,31 @@ public class OI {
      // private static final int bt_14 = 5;
 
      public Joystick thrustmaster;
-     private JoystickButton leftDrive;
-     private JoystickButton rightDrive;
-     private JoystickButton humanCamera;
+     // private JoystickButton leftDrive;
+     // private JoystickButton rightDrive;
+     // private JoystickButton humanCamera;
      private JoystickButton lightSwitch;
      private JoystickButton cameraSwitch;
      private JoystickButton testNetworkTable;
+     private JoystickButton exposureSwitch;
 
      public OI() {
           thrustmaster = new Joystick(0);
-          leftDrive = new JoystickButton(thrustmaster, bt_05);
-          rightDrive = new JoystickButton(thrustmaster, bt_06);
-          humanCamera = new JoystickButton(thrustmaster, bt_09);
+          // leftDrive = new JoystickButton(thrustmaster, bt_05);
+          // rightDrive = new JoystickButton(thrustmaster, bt_06);
+          // humanCamera = new JoystickButton(thrustmaster, bt_09);
           lightSwitch = new JoystickButton(thrustmaster, bt_10);
           testNetworkTable = new JoystickButton(thrustmaster, bt_08);
           cameraSwitch = new JoystickButton(thrustmaster, bt_07);
+          exposureSwitch = new JoystickButton(thrustmaster, bt_05);
 
-          leftDrive.whenPressed(new driveLeft());
-          rightDrive.whenPressed(new driveRight());
-          humanCamera.whenPressed(new visionHuman());
+          // leftDrive.whenPressed(new driveLeft());
+          // rightDrive.whenPressed(new driveRight());
+          // humanCamera.whenPressed(new visionHuman());
           lightSwitch.whenPressed(new ringLight());
           testNetworkTable.whenPressed(new networkTableStart());
           cameraSwitch.whenPressed(new cameraActivate());
+          exposureSwitch.whenPressed(new cameraExposureFlip());
      }
 
      public Joystick getThrustmaster() {

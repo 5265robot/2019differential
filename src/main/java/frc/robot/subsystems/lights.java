@@ -21,6 +21,8 @@ public class lights extends Subsystem {
      // here. Call these from Commands.
 
      private final Talon spike00 = new Talon(9);
+     private UsbCamera camera;
+     private boolean isManual;
 
      /*
       * public lights() { super(); }
@@ -34,9 +36,10 @@ public class lights extends Subsystem {
 
      public void cameraSetup() {
           Thread visionThread = new Thread(() -> {
-               UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+               camera = CameraServer.getInstance().startAutomaticCapture();
                camera.setResolution(160, 120);
                camera.setExposureManual(0);
+               isManual = true;
           });
           visionThread.setDaemon(true);
           visionThread.start();
@@ -52,6 +55,13 @@ public class lights extends Subsystem {
           } else {
                spike00.set(1.0);
           }
+     }
+
+     public void cameraExposure() {
+          if (isManual)
+               camera.setExposureAuto();
+          else
+               camera.setExposureManual(0);
      }
 
 }

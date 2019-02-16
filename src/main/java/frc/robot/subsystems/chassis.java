@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.tankDrive;
 
 /**
- * tank drive model of the chassis
- * four individual drive motors
- * in left and right pairs
+ * tank drive model of the chassis four individual drive motors in left and
+ * right pairs
  */
 public class chassis extends Subsystem {
      // instantiate all our motors here
@@ -34,20 +33,20 @@ public class chassis extends Subsystem {
 
      public chassis() {
           super();
-          
-          addChild("motor00",motor00);
-          addChild("motor01",motor01);
-          addChild("motor02",motor02);
-          addChild("motor03",motor03);
-          addChild("rightMotors",rightMotors);
-          addChild("leftMotors",leftMotors);
-          addChild("drive00",drive00);
-          
+
+          addChild("motor00", motor00);
+          addChild("motor01", motor01);
+          addChild("motor02", motor02);
+          addChild("motor03", motor03);
+          addChild("rightMotors", rightMotors);
+          addChild("leftMotors", leftMotors);
+          addChild("drive00", drive00);
+
           motor00.setInverted(false);
           motor01.setInverted(false);
           motor02.setInverted(false);
           motor03.setInverted(false);
-          
+
           drive00.setSafetyEnabled(false);
           drive00.setExpiration(1.0);
           drive00.setMaxOutput(1.0);
@@ -64,19 +63,20 @@ public class chassis extends Subsystem {
           // Put code here to be run every loop
      }
 
-     public void driveLeft(double ss){
-          drive00.tankDrive(0.0,ss);
+     public void driveLeft(double ss) {
+          drive00.tankDrive(0.0, ss);
      }
 
-     public void driveRight(double ss){
-          drive00.tankDrive(ss,00);
+     public void driveRight(double ss) {
+          drive00.tankDrive(ss, 00);
      }
 
-     public void driveBoth(double left, double right){
+     public void driveBoth(double left, double right) {
           drive00.tankDrive(left, right);
      }
 
-     public void driveTank(Joystick stick){
-          drive00.arcadeDrive(-stick.getY(), -stick.getX());;
+     public void driveTank(Joystick stick) {
+          drive00.arcadeDrive(-stick.getY(), -stick.getX());
+          ;
      }
 }

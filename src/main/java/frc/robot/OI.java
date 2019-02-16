@@ -13,6 +13,7 @@ import frc.robot.commands.cameraActivate;
 import frc.robot.commands.cameraExposureFlip;
 import frc.robot.commands.driveLeft;
 import frc.robot.commands.driveRight;
+import frc.robot.commands.hatchReleaseBackup;
 import frc.robot.commands.networkTableStart;
 import frc.robot.commands.ringLight;
 import frc.robot.commands.visionHuman;
@@ -74,6 +75,7 @@ public class OI {
      private JoystickButton cameraSwitch;
      private JoystickButton testNetworkTable;
      private JoystickButton exposureSwitch;
+     private JoystickButton hatch;
 
      public OI() {
           thrustmaster = new Joystick(0);
@@ -84,6 +86,7 @@ public class OI {
           testNetworkTable = new JoystickButton(thrustmaster, bt_08);
           cameraSwitch = new JoystickButton(thrustmaster, bt_07);
           exposureSwitch = new JoystickButton(thrustmaster, bt_05);
+          hatch = new JoystickButton(thrustmaster, bt_06);
 
           // leftDrive.whenPressed(new driveLeft());
           // rightDrive.whenPressed(new driveRight());
@@ -92,6 +95,7 @@ public class OI {
           testNetworkTable.whenPressed(new networkTableStart());
           cameraSwitch.whenPressed(new cameraActivate());
           exposureSwitch.whenPressed(new cameraExposureFlip());
+          hatch.whenPressed(new hatchReleaseBackup());
      }
 
      public Joystick getThrustmaster() {

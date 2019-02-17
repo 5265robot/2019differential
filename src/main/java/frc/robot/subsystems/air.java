@@ -63,8 +63,5 @@ public class air extends Subsystem {
     // Moving Backwards through button command
     drive00.arcadeDrive(-0.1, -0.1);
 
-  } 
-  public void doc_help_me() {
-    drive00.tankDrive(leftSpeed, rightSpeed);
   }
 }

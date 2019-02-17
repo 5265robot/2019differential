@@ -21,13 +21,13 @@ public class releaseHatch extends InstantCommand {
           super();
           // Use requires() here to declare subsystem dependencies
           // eg. requires(chassis);
-          requires(Robot.m_air);
+          // requires(Robot.m_air);
      }
 
      // Called once when the command executes
      @Override
      protected void initialize() {
-          Robot.m_air.hatchRelease();
+          // Robot.m_air.hatchRelease();
      }
 
 }

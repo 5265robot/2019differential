@@ -8,7 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ballIntake;
 import frc.robot.commands.cameraActivate;
 import frc.robot.commands.cameraExposureFlip;
 import frc.robot.commands.driveLeft;
@@ -76,6 +78,7 @@ public class OI {
      private JoystickButton testNetworkTable;
      private JoystickButton exposureSwitch;
      private JoystickButton hatch;
+     private JoystickButton slider;
 
      public OI() {
           thrustmaster = new Joystick(0);
@@ -87,6 +90,7 @@ public class OI {
           cameraSwitch = new JoystickButton(thrustmaster, bt_07);
           exposureSwitch = new JoystickButton(thrustmaster, bt_05);
           hatch = new JoystickButton(thrustmaster, bt_06);
+          slider = new JoystickButton(thrustmaster, bt_01);
 
           // leftDrive.whenPressed(new driveLeft());
           // rightDrive.whenPressed(new driveRight());
@@ -96,6 +100,7 @@ public class OI {
           cameraSwitch.whenPressed(new cameraActivate());
           exposureSwitch.whenPressed(new cameraExposureFlip());
           hatch.whenPressed(new hatchReleaseBackup());
+          slider.whileHeld(new ballIntake());
      }
 
      public Joystick getThrustmaster() {

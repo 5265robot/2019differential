@@ -80,10 +80,10 @@ public class OI {
           // leftDrive = new JoystickButton(thrustmaster, bt_05);
           // rightDrive = new JoystickButton(thrustmaster, bt_06);
           // humanCamera = new JoystickButton(thrustmaster, bt_09);
-          lightSwitch = new JoystickButton(thrustmaster, bt_10);
-          testNetworkTable = new JoystickButton(thrustmaster, bt_08);
-          cameraSwitch = new JoystickButton(thrustmaster, bt_07);
-          exposureSwitch = new JoystickButton(thrustmaster, bt_05);
+          lightSwitch = new JoystickButton(thrustmaster, 10);
+          testNetworkTable = new JoystickButton(thrustmaster, 8);
+          cameraSwitch = new JoystickButton(thrustmaster, 7);
+          exposureSwitch = new JoystickButton(thrustmaster, 5);
 
           // leftDrive.whenPressed(new driveLeft());
           // rightDrive.whenPressed(new driveRight());

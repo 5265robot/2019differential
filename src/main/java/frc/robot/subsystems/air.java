@@ -22,18 +22,19 @@ public class air extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final VictorSP motor00 = new VictorSP(0);
+      /*private final VictorSP motor00 = new VictorSP(0);
      private final VictorSP motor01 = new VictorSP(1);
      private final VictorSP motor02 = new VictorSP(2);
      private final VictorSP motor03 = new VictorSP(3);
      private final SpeedControllerGroup rightMotors = new SpeedControllerGroup(motor00, motor01);
      private final SpeedControllerGroup leftMotors = new SpeedControllerGroup(motor02, motor03);
      private final DifferentialDrive drive00 = new DifferentialDrive(leftMotors, rightMotors);
-
+*/
 
      public air() {
       super();
       
+      /*
       addChild("motor00",motor00);
       addChild("motor01",motor01);
       addChild("motor02",motor02);
@@ -50,6 +51,7 @@ public class air extends Subsystem {
       drive00.setSafetyEnabled(false);
       drive00.setExpiration(1.0);
       drive00.setMaxOutput(1.0);
+      */
  }
 
   @Override
@@ -61,7 +63,7 @@ public class air extends Subsystem {
   public void driveByTime() {
     // Fire Pnuematics
     // Moving Backwards through button command
-    drive00.arcadeDrive(-0.1, -0.1);
+    //drive00.arcadeDrive(-0.1, -0.1);
 
   }
 }

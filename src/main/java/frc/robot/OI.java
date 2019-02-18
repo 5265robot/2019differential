@@ -8,17 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.JoystickBase;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.armChainTwist;
 import frc.robot.commands.ballIntake;
-import frc.robot.commands.cameraActivate;
-import frc.robot.commands.cameraExposureFlip;
-import frc.robot.commands.driveLeft;
-import frc.robot.commands.driveRight;
+//import frc.robot.commands.cameraActivate;
+//import frc.robot.commands.cameraExposureFlip;
 import frc.robot.commands.hatchReleaseBackup;
 import frc.robot.commands.networkTableStart;
 import frc.robot.commands.ringLight;
-import frc.robot.commands.visionHuman;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -79,28 +76,25 @@ public class OI {
      private JoystickButton exposureSwitch;
      private JoystickButton hatch;
      private JoystickButton slider;
+     private JoystickButton armChainButton;
 
      public OI() {
           thrustmaster = new Joystick(0);
-          // leftDrive = new JoystickButton(thrustmaster, bt_05);
-          // rightDrive = new JoystickButton(thrustmaster, bt_06);
-          // humanCamera = new JoystickButton(thrustmaster, bt_09);
-          lightSwitch = new JoystickButton(thrustmaster, bt_10);
-          testNetworkTable = new JoystickButton(thrustmaster, bt_08);
-          cameraSwitch = new JoystickButton(thrustmaster, bt_07);
-          exposureSwitch = new JoystickButton(thrustmaster, bt_05);
-          hatch = new JoystickButton(thrustmaster, bt_06);
-          slider = new JoystickButton(thrustmaster, bt_01);
+          lightSwitch = new JoystickButton(thrustmaster, 10);
+          testNetworkTable = new JoystickButton(thrustmaster, 8);
+          cameraSwitch = new JoystickButton(thrustmaster, 07);
+          exposureSwitch = new JoystickButton(thrustmaster, 05);
+          hatch = new JoystickButton(thrustmaster, 06);
+          slider = new JoystickButton(thrustmaster, 01);
+          armChainButton = new JoystickButton(thrustmaster, 9);
 
-          // leftDrive.whenPressed(new driveLeft());
-          // rightDrive.whenPressed(new driveRight());
-          // humanCamera.whenPressed(new visionHuman());
           lightSwitch.whenPressed(new ringLight());
           testNetworkTable.whenPressed(new networkTableStart());
-          cameraSwitch.whenPressed(new cameraActivate());
-          exposureSwitch.whenPressed(new cameraExposureFlip());
+          cameraSwitch.whenPressed(new ringLight());// cameraActivate());
+          exposureSwitch.whenPressed(new ringLight());// cameraExposureFlip());
           hatch.whenPressed(new hatchReleaseBackup());
-          slider.whileHeld(new ballIntake());
+          slider.whenPressed(new ballIntake());
+          armChainButton.cancelWhenPressed(new armChainTwist());
      }
 
      public Joystick getThrustmaster() {

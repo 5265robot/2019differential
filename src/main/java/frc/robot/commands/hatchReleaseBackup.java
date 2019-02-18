@@ -16,7 +16,7 @@ public class hatchReleaseBackup extends CommandGroup {
 
      private double left = -0.1;
      private double right = -0.1;
-     private double time = -0.1;
+     private double time = 0.1;
 
      public hatchReleaseBackup() {
           // Add Commands here:
@@ -24,7 +24,7 @@ public class hatchReleaseBackup extends CommandGroup {
           // addSequential(new Command2());
           // these will run in order.
           addSequential(new releaseHatch());
-          addSequential(new driveByTime(left, right, time));
+          // addSequential(new driveByTime(left, right, time));
 
           // To run multiple commands at the same time,
           // use addParallel()

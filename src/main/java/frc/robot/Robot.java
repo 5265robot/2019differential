@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.air;
 import frc.robot.subsystems.chassis;
 import frc.robot.subsystems.lights;
-//import frc.robot.subsystems.vision;
 import frc.robot.subsystems.networkTableVision;
 
 /**
@@ -29,9 +27,8 @@ import frc.robot.subsystems.networkTableVision;
 public class Robot extends TimedRobot {
      public static chassis m_chassis = new chassis();
      public static lights m_lights = new lights();
-     // public static air m_air = new air();
+     public static air m_air = new air();
      public static networkTableVision m_networkTableVision = new networkTableVision();
-     // public static vision m_vision = new vision();
      public static OI m_oi;
 
      Command m_autonomousCommand;

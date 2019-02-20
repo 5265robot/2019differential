@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -35,12 +36,21 @@ public class networkTableVision extends Subsystem {
           // get (does it also create??) a table entry by name
           myX = mytable.getEntry("X");
           myY = mytable.getEntry("Y");
+          mytable = myNT.getTable("GRIP/myContoursReport");
      }
 
      @Override
      public void initDefaultCommand() {
           // Set the default command for a subsystem here.
           // setDefaultCommand(new MySpecialCommand());
+          /*
+           * double[] defaultValue = new double[0]; while (true) { double[] areas =
+           * mytable.getEntry("area", defaultValue); System.out.print("areas: "); for
+           * (double area : areas) { System.out.print(area + " "); } System.out.println();
+           * Timer.delay(1);
+           * 
+           * }
+           */
      }
 
      public void start() {

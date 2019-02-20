@@ -11,11 +11,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.armChainTwist;
 import frc.robot.commands.ballIntake;
+import frc.robot.commands.cameraActivate;
+import frc.robot.commands.cameraExposureFlip;
 //import frc.robot.commands.cameraActivate;
 //import frc.robot.commands.cameraExposureFlip;
 import frc.robot.commands.hatchReleaseBackup;
+import frc.robot.commands.liftup;
 import frc.robot.commands.networkTableStart;
+import frc.robot.commands.pistonfire;
 import frc.robot.commands.ringLight;
+import frc.robot.commands.SoLlY;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -77,24 +82,33 @@ public class OI {
      private JoystickButton hatch;
      private JoystickButton slider;
      private JoystickButton armChainButton;
+     private JoystickButton Solenoid;
+     private JoystickButton liftButton;
+     private JoystickButton BEGONETHOT;
 
      public OI() {
           thrustmaster = new Joystick(0);
+
           lightSwitch = new JoystickButton(thrustmaster, 10);
           testNetworkTable = new JoystickButton(thrustmaster, 8);
           cameraSwitch = new JoystickButton(thrustmaster, 07);
           exposureSwitch = new JoystickButton(thrustmaster, 05);
           hatch = new JoystickButton(thrustmaster, 06);
           slider = new JoystickButton(thrustmaster, 01);
-          armChainButton = new JoystickButton(thrustmaster, 9);
+          armChainButton = new JoystickButton(thrustmaster, 2);
+          Solenoid = new JoystickButton(thrustmaster, 11);
+          BEGONETHOT = new JoystickButton(thrustmaster, 3);
 
-          lightSwitch.whenPressed(new ringLight());
-          testNetworkTable.whenPressed(new networkTableStart());
-          cameraSwitch.whenPressed(new ringLight());// cameraActivate());
-          exposureSwitch.whenPressed(new ringLight());// cameraExposureFlip());
+          // lightSwitch.whenPressed(new ringLight());
+          // testNetworkTable.whenPressed(new networkTableStart());
+          // cameraSwitch.whenPressed(new cameraActivate());// cameraActivate());
+          // exposureSwitch.whenPressed(new cameraExposureFlip());//
+          // cameraExposureFlip());
           hatch.whenPressed(new hatchReleaseBackup());
           slider.whenPressed(new ballIntake());
-          armChainButton.cancelWhenPressed(new armChainTwist());
+          armChainButton.whenPressed(new armChainTwist());
+          Solenoid.whenPressed(new SoLlY());
+          BEGONETHOT.whenReleased(new pistonfire());
      }
 
      public Joystick getThrustmaster() {

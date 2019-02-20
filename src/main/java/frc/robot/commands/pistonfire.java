@@ -13,21 +13,21 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class armChainTwist extends InstantCommand {
+public class pistonfire extends InstantCommand {
      /**
       * Add your docs here.
       */
-     public armChainTwist() {
+     public pistonfire() {
           super();
+          requires(Robot.m_arms);
           // Use requires() here to declare subsystem dependencies
           // eg. requires(chassis);
-          requires(Robot.m_arms);
      }
 
      // Called once when the command executes
      @Override
      protected void initialize() {
-          Robot.m_arms.armChainRotate();
+          Robot.m_arms.deploy();
      }
 
 }

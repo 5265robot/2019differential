@@ -7,12 +7,14 @@
 
 package frc.robot;
 
+//import org.graalvm.compiler.lir.Variable;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.air;
+import frc.robot.subsystems.arms;
 import frc.robot.subsystems.chassis;
 import frc.robot.subsystems.lights;
 import frc.robot.subsystems.networkTableVision;
@@ -27,9 +29,10 @@ import frc.robot.subsystems.networkTableVision;
 public class Robot extends TimedRobot {
      public static chassis m_chassis = new chassis();
      public static lights m_lights = new lights();
-     public static air m_air = new air();
+     public static arms m_arms = new arms();
      public static networkTableVision m_networkTableVision = new networkTableVision();
      public static OI m_oi;
+     public boolean pistonfired;
 
      Command m_autonomousCommand;
      SendableChooser<Command> m_chooser = new SendableChooser<>();

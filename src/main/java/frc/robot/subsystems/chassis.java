@@ -21,7 +21,7 @@ import frc.robot.commands.tankDrive;
 public class chassis extends Subsystem {
      // instantiate all our motors here
 
-     private final VictorSP motor00 = new VictorSP(0);
+     private final VictorSP motor00 = new VictorSP(4);
      private final VictorSP motor01 = new VictorSP(1);
      private final VictorSP motor02 = new VictorSP(2);
      private final VictorSP motor03 = new VictorSP(3);

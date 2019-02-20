@@ -14,13 +14,13 @@ public class ballIntake extends Command {
      public ballIntake() {
           // Use requires() here to declare subsystem dependencies
           // eg. requires(chassis);
-          requires(Robot.m_air);
+          requires(Robot.m_arms);
      }
 
      // Called just before this Command runs the first time
      @Override
      protected void initialize() {
-          Robot.m_air.spinBall();
+          Robot.m_arms.spinBall();
      }
 
      // Called repeatedly when this Command is scheduled to run

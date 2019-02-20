@@ -13,11 +13,11 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class armChainTwist extends InstantCommand {
+public class SoLlY extends InstantCommand {
      /**
       * Add your docs here.
       */
-     public armChainTwist() {
+     public SoLlY() {
           super();
           // Use requires() here to declare subsystem dependencies
           // eg. requires(chassis);
@@ -27,7 +27,8 @@ public class armChainTwist extends InstantCommand {
      // Called once when the command executes
      @Override
      protected void initialize() {
-          Robot.m_arms.armChainRotate();
+          Robot.m_arms.Solly();
+
      }
 
 }

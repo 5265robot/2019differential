@@ -9,106 +9,86 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.armChainTwist;
-import frc.robot.commands.ballIntake;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.commands.cameraActivate;
 import frc.robot.commands.cameraExposureFlip;
-//import frc.robot.commands.cameraActivate;
-//import frc.robot.commands.cameraExposureFlip;
-import frc.robot.commands.hatchReleaseBackup;
-import frc.robot.commands.liftup;
+import frc.robot.commands.leftGo;
 import frc.robot.commands.networkTableStart;
-import frc.robot.commands.pistonfire;
+import frc.robot.commands.printCurrentAngle;
+import frc.robot.commands.rightGo;
 import frc.robot.commands.ringLight;
-import frc.robot.commands.SoLlY;
+import frc.robot.commands.rotateToSomeAngle;
+import frc.robot.commands.zeroResetNavX;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-     //// CREATING BUTTONS
-     // One type of button is a joystick button which is any button on a
-     //// joystick.
-     // You create one by telling it which joystick it's on and which button
-     // number it is.
-     // Joystick stick = new Joystick(port);
-     // Button button = new JoystickButton(stick, buttonNumber);
-
-     // There are a few additional built in buttons you can use. Additionally,
-     // by subclassing Button you can create custom triggers and bind those to
-     // commands the same as any other Button.
-
-     //// TRIGGERING COMMANDS WITH BUTTONS
-     // Once you have a button, it's trivial to bind it to a button in one of
-     // three ways:
-
-     // Start the command when the button is pressed and let it run the command
-     // until it is finished as determined by it's isFinished method.
-     // button.whenPressed(new ExampleCommand());
-
-     // Run the command while the button is being held down and interrupt it once
-     // the button is released.
-     // button.whileHeld(new ExampleCommand());
-
-     // Start the command when the button is released and let it run the command
-     // until it is finished as determined by it's isFinished method.
-     // button.whenReleased(new ExampleCommand());
-
-     // THRUSTMASTER button number converted to driver station input number
-     private static final int bt_01 = 6;
-     private static final int bt_02 = 5;
-     private static final int bt_03 = 12;
-     private static final int bt_04 = 11;
-     private static final int bt_05 = 1;
-     private static final int bt_06 = 2;
-     private static final int bt_07 = 3;
-     private static final int bt_08 = 4;
-     private static final int bt_09 = 8;
-     private static final int bt_10 = 7;
-     private static final int bt_11 = 9;
-     private static final int bt_12 = 10;
-     private static final int bt_13 = 13;
-     // private static final int bt_14 = 5;
 
      public Joystick thrustmaster;
-     // private JoystickButton leftDrive;
-     // private JoystickButton rightDrive;
-     // private JoystickButton humanCamera;
+
      private JoystickButton lightSwitch;
      private JoystickButton cameraSwitch;
      private JoystickButton testNetworkTable;
      private JoystickButton exposureSwitch;
-     private JoystickButton hatch;
-     private JoystickButton slider;
-     private JoystickButton armChainButton;
-     private JoystickButton Solenoid;
-     private JoystickButton liftButton;
-     private JoystickButton BEGONETHOT;
+     private JoystickButton rotateTo90;
+     private JoystickButton rotateTo00;
+     private JoystickButton zeroGyro;
+     private JoystickButton printGyro;
+     private JoystickButton leftShift;
+     private JoystickButton rightShift;
+
+     private POVButton turn0;
+     private POVButton turn90;
+     private POVButton turn180;
+     private POVButton turnNeg90;
+     private POVButton turn29;
+     private POVButton turn151;
+     private POVButton turnNeg29;
+     private POVButton turnNeg151;
 
      public OI() {
           thrustmaster = new Joystick(0);
 
-          lightSwitch = new JoystickButton(thrustmaster, 10);
+          lightSwitch = new JoystickButton(thrustmaster, 6);
           testNetworkTable = new JoystickButton(thrustmaster, 8);
           cameraSwitch = new JoystickButton(thrustmaster, 07);
           exposureSwitch = new JoystickButton(thrustmaster, 05);
-          hatch = new JoystickButton(thrustmaster, 06);
-          slider = new JoystickButton(thrustmaster, 01);
-          armChainButton = new JoystickButton(thrustmaster, 2);
-          Solenoid = new JoystickButton(thrustmaster, 11);
-          BEGONETHOT = new JoystickButton(thrustmaster, 3);
+          rotateTo90 = new JoystickButton(thrustmaster, 9);
+          rotateTo00 = new JoystickButton(thrustmaster, 10);
+          zeroGyro = new JoystickButton(thrustmaster, 11);
+          printGyro = new JoystickButton(thrustmaster, 12);
+          leftShift = new JoystickButton(thrustmaster, 2);
+          rightShift = new JoystickButton(thrustmaster, 4);
 
-          // lightSwitch.whenPressed(new ringLight());
-          // testNetworkTable.whenPressed(new networkTableStart());
-          // cameraSwitch.whenPressed(new cameraActivate());// cameraActivate());
-          // exposureSwitch.whenPressed(new cameraExposureFlip());//
-          // cameraExposureFlip());
-          hatch.whenPressed(new hatchReleaseBackup());
-          slider.whenPressed(new ballIntake());
-          armChainButton.whenPressed(new armChainTwist());
-          Solenoid.whenPressed(new SoLlY());
-          BEGONETHOT.whenReleased(new pistonfire());
+          turn0 = new POVButton(thrustmaster, 0);
+          turn90 = new POVButton(thrustmaster, 90);
+          turn180 = new POVButton(thrustmaster, 180);
+          turnNeg90 = new POVButton(thrustmaster, 270);
+          turn151 = new POVButton(thrustmaster, 45);
+          turn29 = new POVButton(thrustmaster, 135);
+          turnNeg29 = new POVButton(thrustmaster, 315);
+          turnNeg151 = new POVButton(thrustmaster, 225);
+
+          lightSwitch.whenPressed(new ringLight());
+          testNetworkTable.whenPressed(new networkTableStart());
+          cameraSwitch.whenPressed(new cameraActivate());
+          exposureSwitch.whenPressed(new cameraExposureFlip());
+
+          turn0.whenPressed(new rotateToSomeAngle(0.0));
+          turn90.whenPressed(new rotateToSomeAngle(90.0));
+          turnNeg90.whenPressed(new rotateToSomeAngle(-90.0));
+          turnNeg29.whenPressed(new rotateToSomeAngle(-29.0));
+          turnNeg151.whenPressed(new rotateToSomeAngle(-151.0));
+          turn29.whenPressed(new rotateToSomeAngle(29.0));
+          turn180.whenPressed(new rotateToSomeAngle(179.5));
+          turn151.whenPressed(new rotateToSomeAngle(151.0));
+
+          zeroGyro.whenPressed(new zeroResetNavX());
+          printGyro.whenPressed(new printCurrentAngle());
+          leftShift.whenPressed(new leftGo());
+          rightShift.whenPressed(new rightGo());
      }
 
      public Joystick getThrustmaster() {

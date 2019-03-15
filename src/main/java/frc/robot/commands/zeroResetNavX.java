@@ -9,26 +9,25 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
-//import frc.robot.subsystems.networkTableVision;
 
 /**
  * Add your docs here.
  */
-public class networkTableStart extends InstantCommand {
+public class zeroResetNavX extends InstantCommand {
      /**
-      * Currently, just initializes some values in the network table for testing
+      * Add your docs here.
       */
-     public networkTableStart() {
+     public zeroResetNavX() {
           super();
           // Use requires() here to declare subsystem dependencies
           // eg. requires(chassis);
-          requires(Robot.m_networkTableVision);
+          requires(Robot.m_chassis);
      }
 
      // Called once when the command executes
      @Override
      protected void initialize() {
-          Robot.m_networkTableVision.getBlobs();
+          Robot.m_chassis.zeroNavX();
      }
 
 }

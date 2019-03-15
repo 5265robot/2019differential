@@ -62,6 +62,22 @@ public class networkTableVision extends Subsystem {
                myX.setDouble(2.11);
                myY.setBoolean(true);
           }
+     }
+
+     public void getBlobs() {
+          Number[] defaultValue = new Number[0];
+          while (true) {
+               myX = mytable.getEntry("area");
+               // getNumberArray();
+               Number[] areas = myX.getNumberArray(defaultValue);
+               System.out.print("areas: ");
+               for (Number area : areas) {
+                    System.out.print(area + " ");
+               }
+
+               System.out.println("");
+               Timer.delay(1);
+          }
 
      }
 }

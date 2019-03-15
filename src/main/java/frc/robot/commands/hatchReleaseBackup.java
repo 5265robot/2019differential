@@ -14,9 +14,10 @@ public class hatchReleaseBackup extends CommandGroup {
       * Add your docs here.
       */
 
-     private double left = -0.1;
-     private double right = -0.1;
-     private double time = 0.1;
+     /*
+      * private double left = -0.1; private double right = -0.1; private double time
+      * = 0.1;
+      */
 
      public hatchReleaseBackup() {
           // Add Commands here:

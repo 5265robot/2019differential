@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.VictorSP;
 //import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -23,7 +22,7 @@ public class arms extends Subsystem {
      // private DoubleSolenoid piston = new DoubleSolenoid(0, 1);
      private VictorSP spinneyLeft = new VictorSP(6);
      private VictorSP spinneyRight = new VictorSP(7);
-     private VictorSP armChainMotor = new VictorSP(0);
+     private VictorSP armChainMotor = new VictorSP(8);
 
      // private DoubleSolenoid airDoubleSolenoid = new DoubleSolenoid(0, 1);
 
